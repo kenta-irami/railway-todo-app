@@ -33,3 +33,37 @@
 .error-message {
   color: #ff3333;
 }
+
+/* タブレット用スタイル */
+@media screen and (max-width: 768px) {
+  .signin {
+    max-width: 90%;
+  }
+
+  .email-input,
+  .password-input {
+    font-size: medium;
+  }
+
+  .signin-button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* スマートフォン用スタイル */
+@media screen and (max-width: 320px) {
+  .signin {
+    max-width: 100%;
+  }
+
+  .email-input,
+  .password-input {
+    font-size: small;
+    height: 25px;
+  }
+
+  .signin-button {
+    width: 100%;
+  }
+}

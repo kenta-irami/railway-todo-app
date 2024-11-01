@@ -17,17 +17,40 @@
   list-style: none;
   display: flex;
   overflow-x: auto;
+  position: relative; // 追加
+  z-index: 1;
+  padding: 2px 0; // 上下にパディングを追加
+  scrollbar-width: thin; // Firefox用のスクロールバー幅の設定
 }
 
 .list-tab-item {
   flex-shrink: 0;
   width: 100px;
   padding: 0 25px;
+  padding: 5px 25px; // 上下のパディングを追加
   text-overflow: normal;
   margin-right: 5px;
   border: solid 1px #242f9b;
   justify-content: center;
   align-items: center;
+  position: relative; // 追加
+  z-index: 1; // 追加
+  margin: 4px; // マージンを追加
+}
+
+.list-tab-item:focus,
+.task-item-link:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+  border-radius: 4px; // 角を丸くする
+  z-index: 2; // 追加
+  position: relative; // 追加
+}
+
+.list-tab-item:focus:not(:focus-visible),
+.task-item-link:focus:not(:focus-visible) {
+  outline-color: transparent;
+  box-shadow: none;
 }
 
 .active {
@@ -52,14 +75,39 @@
   padding-left: 25px;
   font-size: large;
   border: solid 1px #ffffff;
+  display: flex;
+  align-items: center;
 }
 
 .task-item-link {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
   text-decoration: none;
   color: #000000;
+}
+
+.task-title {
+  font-weight: bold;
+}
+
+.task-info {
+  text-align: right;
+}
+
+.task-status {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.task-deadline {
+  font-size: 16px;
+}
+
+.task-remaining {
+  font-size: 14px;
 }
 
 .error-message {
@@ -73,4 +121,72 @@
 
 .display-select {
   width: 100%;
+}
+
+// レスポンシブ対応のためのメディアクエリ
+@media screen and (max-width: 768px) {
+  .taskList {
+    width: 90%; // 幅を画面サイズに応じて調整
+    margin: 30px auto; // マージンを縮小
+  }
+
+  .list-tab-item {
+    width: 80px; // タブの幅を縮小
+    padding: 5px 15px; // パディングを調整
+  }
+
+  .task-item {
+    height: auto; // 高さを自動調整
+    padding: 15px; // パディングを調整
+  }
+
+  .task-item-link {
+    flex-direction: column; // リンク内の要素を縦並びに
+    align-items: flex-start; // 左揃えに
+  }
+
+  .task-info {
+    text-align: left; // 左揃えに
+    margin-top: 10px; // 上部にマージンを追加
+  }
+
+  .display-select-wrapper {
+    width: 100%; // 幅を100%に
+    margin: 0 0 15px 0; // マージンを調整
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .taskList {
+    width: 95%; // 幅をさらに調整
+    margin: 20px auto; // マージンをさらに縮小
+  }
+
+  .list-header {
+    flex-direction: column; // ヘッダーを縦並びに
+  }
+
+  .list-menu {
+    text-align: left; // 左揃えに
+    margin-top: 10px; // 上部にマージンを追加
+  }
+
+  .list-tab {
+    flex-wrap: wrap; // タブを折り返す
+  }
+
+  .list-tab-item {
+    width: calc(50% - 10px); // 2列表示に
+    margin: 2px; // マージンを調整
+  }
+
+  .task-item {
+    padding: 10px; // パディングをさらに調整
+  }
+
+  .task-status,
+  .task-deadline,
+  .task-remaining {
+    font-size: 14px; // フォントサイズを縮小
+  }
 }

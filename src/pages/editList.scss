@@ -34,3 +34,44 @@
 .error-message {
   color: #ff3333;
 }
+
+// タブレット向けのスタイル
+@media screen and (max-width: 768px) {
+  .edit-list {
+    width: 90%;
+    max-width: 768px;
+  }
+
+  .edit-list-title {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .delete-list-button,
+  .edit-list-button {
+    width: 100%;
+    max-width: 200px;
+    margin: 15px auto;
+    display: block;
+  }
+}
+
+// スマートフォン向けのスタイル
+@media screen and (max-width: 320px) {
+  .edit-list {
+    width: 95%;
+  }
+
+  .edit-list-title {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .delete-list-button,
+  .edit-list-button {
+    width: 100%;
+    height: 35px;
+    margin: 10px auto;
+    font-size: 14px;
+  }
+}

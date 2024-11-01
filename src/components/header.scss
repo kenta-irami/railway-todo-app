@@ -12,4 +12,34 @@
 .sign-out-button {
   color: #ffffff;
   margin: auto 25px auto auto;
+  &:focus {
+    outline: 2px solid #000; // フォーカス時の枠のスタイルを定義
+    border-radius: 4px; // 角を丸くする
+  }
+}
+
+// タブレット向けのスタイル
+@media screen and (max-width: 768px) {
+  .header {
+    height: 70px; // ヘッダーの高さを少し小さく
+  }
+
+  .sign-out-button {
+    margin: auto 15px auto auto; // 右マージンを少し小さく
+  }
+}
+
+// スマートフォン向けのスタイル
+@media screen and (max-width: 320px) {
+  .header {
+    height: 60px; // ヘッダーの高さをさらに小さく
+    flex-direction: column; // 縦並びに変更（必要に応じて）
+    justify-content: center; // 中央揃え
+    align-items: center; // 中央揃え
+  }
+
+  .sign-out-button {
+    margin: 5px auto; // マージンを調整
+    font-size: 14px; // フォントサイズを小さく
+  }
 }

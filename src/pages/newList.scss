@@ -21,3 +21,34 @@
   height: 40px;
   border-radius: 5px;
 }
+
+/* タブレット用スタイル */
+@media screen and (max-width: 768px) {
+  .new-list {
+    max-width: 90%;
+  }
+
+  .new-list-title {
+    max-width: 250px;
+  }
+
+  .new-list-button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* スマートフォン用スタイル */
+@media screen and (max-width: 320px) {
+  .new-list {
+    max-width: 100%;
+  }
+
+  .new-list-title {
+    max-width: 100%;
+  }
+
+  .new-list-button {
+    width: 100%;
+  }
+}

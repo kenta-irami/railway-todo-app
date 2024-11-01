@@ -29,3 +29,39 @@
 .error-message {
   color: #ff3333;
 }
+
+/* タブレット用スタイル */
+@media screen and (max-width: 768px) {
+  .signup {
+    max-width: 90%;
+  }
+
+  .email-input,
+  .name-input,
+  .password-input {
+    font-size: medium;
+  }
+
+  .signup-button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* スマートフォン用スタイル */
+@media screen and (max-width: 320px) {
+  .signup {
+    max-width: 100%;
+  }
+
+  .email-input,
+  .name-input,
+  .password-input {
+    font-size: small;
+    height: 25px;
+  }
+
+  .signup-button {
+    width: 100%;
+  }
+}

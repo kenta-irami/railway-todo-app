@@ -35,3 +35,46 @@
 .error-message {
   color: #ff3333;
 }
+
+// タブレット向けのスタイル
+@media screen and (max-width: 768px) {
+  .edit-task {
+    width: 90%;
+    max-width: 768px;
+  }
+
+  .edit-task-title,
+  .edit-task-detail {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .delete-task-button,
+  .edit-task-button {
+    width: 100%;
+    max-width: 200px;
+    margin: 15px auto;
+    display: block;
+  }
+}
+
+// スマートフォン向けのスタイル
+@media screen and (max-width: 375px) {
+  .edit-task {
+    width: 95%;
+  }
+
+  .edit-task-title,
+  .edit-task-detail {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .delete-task-button,
+  .edit-task-button {
+    width: 100%;
+    height: 35px;
+    margin: 10px auto;
+    font-size: 14px;
+  }
+}

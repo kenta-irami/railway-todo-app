@@ -11,18 +11,43 @@ export const EditTask = () => {
   const { listId, taskId } = useParams();
   const [cookies] = useCookies();
   const [title, setTitle] = useState("");
+  const [limit, setTimeLimit] = useState(""); //追加箇所
   const [detail, setDetail] = useState("");
   const [isDone, setIsDone] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleTimeLimit = (e) => setTimeLimit(e.target.value); //追加箇所
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleIsDoneChange = (e) => setIsDone(e.target.value === "done");
+
+  // UTCの日時文字列をローカルの日時文字列に変換する関数
+  const utcToLocal = (utcDateString) => {
+    const date = new Date(utcDateString);
+    return date
+      .toLocaleString("sv-SE", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      })
+      .replace(" ", "T");
+  };
+
+  // ローカルの日時文字列をUTCの日時文字列に変換する関数
+  const localToUtc = (localDateString) => {
+    const date = new Date(localDateString);
+    return date.toISOString();
+  };
+
   const onUpdateTask = () => {
-    console.log(isDone);
+    const formattedLimit = limit ? localToUtc(limit) : null;
     const data = {
       title: title,
       detail: detail,
       done: isDone,
+      limit: formattedLimit,
     };
 
     axios
@@ -64,7 +89,10 @@ export const EditTask = () => {
       })
       .then((res) => {
         const task = res.data;
+        const localDeadline = utcToLocal(task.limit);
+
         setTitle(task.title);
+        setTimeLimit(localDeadline);
         setDetail(task.detail);
         setIsDone(task.done);
       })
@@ -87,6 +115,15 @@ export const EditTask = () => {
             onChange={handleTitleChange}
             className="edit-task-title"
             value={title}
+          />
+          <br />
+          <label>制限日時</label>
+          <br />
+          <input
+            type="datetime-local"
+            onChange={handleTimeLimit}
+            className="edit-task-time-limit"
+            value={limit}
           />
           <br />
           <label>詳細</label>

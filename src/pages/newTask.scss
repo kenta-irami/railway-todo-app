@@ -31,3 +31,42 @@
 .error-message {
   color: #ff3333;
 }
+
+/* タブレット用スタイル */
+@media screen and (max-width: 768px) {
+  .new-task {
+    max-width: 90%;
+  }
+
+  .new-task-select-list,
+  .new-task-title,
+  .new-task-detail {
+    max-width: 250px;
+  }
+
+  .new-task-button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* スマートフォン用スタイル */
+@media screen and (max-width: 320px) {
+  .new-task {
+    max-width: 100%;
+  }
+
+  .new-task-select-list,
+  .new-task-title,
+  .new-task-detail {
+    max-width: 100%;
+  }
+
+  .new-task-detail {
+    height: 150px;
+  }
+
+  .new-task-button {
+    width: 100%;
+  }
+}
